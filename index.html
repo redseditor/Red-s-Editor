@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Lock scaling and prevent user zooming/scrolling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Login Screen</title>
+  <style>
+    /* Reset margins and disable user selection & overscroll bounce */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Prevents all scrolling */
+      position: fixed;  /* Keeps screen completely static on swipe/drag */
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #00b0f0; /* Sky blue background */
+    }
+
+    /* Main container holding full screen */
+    .screen-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top content section */
+    .top-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 6vh;
+      z-index: 2;
+    }
+
+    /* PNG Box container - Border removed to make box invisible */
+    .png-box {
+      width: 90vw;
+      max-width: 480px;
+      height: 30vh;
+      max-height: 280px;
+      border: none; /* Box border removed */
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .png-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* Version text centered under the invisible box container */
+    .version-text {
+      width: 90vw;
+      max-width: 480px;
+      text-align: center;
+      margin-top: 14px;
+      font-weight: bold;
+      font-size: 34px;
+      color: #000000;
+    }
+
+    /* Grassland bottom section */
+    .grassland {
+      width: 100%;
+      height: 42vh;
+      background-color: #00ff00; /* Bright green grassland */
+      border-top-left-radius: 50% 30px;
+      border-top-right-radius: 50% 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Instruction text on top of the login button */
+    .instruction-text {
+      color: #000000;
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      padding: 0 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Tappable Pink Login Button */
+    .login-btn {
+      width: 85vw;
+      max-width: 400px;
+      height: 85px;
+      background-color: #ff80b3; /* Pink background */
+      color: #ffffff;
+      font-size: 42px;
+      font-weight: bold;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.1s ease, background-color 0.2s;
+    }
+
+    /* Tap feedback */
+    .login-btn:active {
+      transform: scale(0.96);
+      background-color: #f069a1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="screen-container">
+    
+    <!-- Top area with test.png inside invisible box container -->
+    <div class="top-section">
+      <div class="png-box">
+        <img src="test.png" alt="test.png" />
+      </div>
+      <div class="version-text">1.0.0</div>
+    </div>
+
+    <!-- Grassland section -->
+    <div class="grassland">
+      <div class="instruction-text">Hit that little button below here to start!</div>
+      <button class="login-btn" type="button">Login</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Prevents touch dragging / pulling down on mobile screens
+    document.addEventListener('touchmove', function(event) {
+      event.preventDefault();
+    }, { passive: false });
+  </script>
+
+</body>
+</html>
+
